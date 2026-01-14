@@ -100,6 +100,15 @@ term
 - [ ] Update the website
 - [ ] Contact the media
 
+```python
+<copy>
+un = "<your database username>"
+pw = "<your database password>"
+<if type="livelabs">cs = "host.containers.internal/FREEPDB1"</if>
+<if type="ocw24">cs = "host.containers.internal/FREEPDB1"</if>
+</copy>
+```
+
 ## Extended Syntax NOT Supported by LiveLabs
 
 ### Emoji

@@ -1,149 +1,54 @@
-# Setup the Python Environment
+# Start the Jupyter Lab Environment
 
 ## Introduction
 
-This lab guide will walk you through setting up Python and Jupyter Lab, which is the development environment we will use to write our RAG chatbot.
+This lab guide will walk you through starting up Jupyter Lab notebook, which is the development environment we will explore Oracle AI Database AI capabilities.
 
 Estimated Time: 15 minutes
 
 ### Objectives
 
-* Start the Jupyter Lab server and open the development environment.
+* Start the Jupyter Lab server and open the development notebook.
 
 ### Prerequisites
 
 * Access to the virtual environment generated for this lab
-* Basic Linux knowledge
+* Basic Linux, Python and SQL knowledge
 
 ## Task 1: Open the remote Jupyter Lab environment
-Click the `View Login Info` link in the uper left side of your lab window:
-
-![alt text](images/image3.png)
-
-To access the Jupyter Lab environment we will use to write and test our code, click the JupyterLab link in the resulting popup. 
-The password is listed in the same popup as well.
-
-The Jupyter Lab launcher should open.
-![Jupyter launcher](images/image1.png)
-
-## Task 1: Setup the database
-
-1. Open a terminal from the Jupyter Launcher by clicking on the `Terminal` button.
-   ![Jupyter terminal](images/image2.png)
-
-   Now enter the DB environment with :
-
-   ```bash
-   <copy>./dba.sh</copy> 
-   ```
-
-2. The latest Oracle AI Database is already installed in the Lab image, but we need to do a few things first.
-
-```bash
-<copy>sqlplus sys/freepdb1 as sysdba</copy>
+On your bash shell command line, enter the following:
+```
+<copy>
+jupyter lab --ip=0.0.0.0 --allow-root&
+</copy>
 ```
 
-3. Paste the following command inside the SQL*Plus session.
+![Jupyter server start](images/jupyter01.png)
 
-   ```sql
-   <copy>alter session set container = freepdb1;</copy>
-   ```
-   ```sql
-   <copy>
-   Create bigfile tablespace tbs2  
-   Datafile 'bigtbs_f2.dbf'  
-   SIZE 1G AUTOEXTEND ON  
-   next 32m maxsize unlimited
-   extent management local segment space management auto;
-   </copy>
-   ``` 
-   ```sql
-   <copy>
-   CREATE UNDO TABLESPACE undots2 DATAFILE 'undotbs_2a.dbf' SIZE 1G AUTOEXTEND ON RETENTION GUARANTEE;
-   </copy>
-   ```
-   ```sql
-   <copy>
-   CREATE TEMPORARY TABLESPACE temp_demo  
-   TEMPFILE 'temp02.dbf' SIZE 1G reuse AUTOEXTEND ON  
-   next 32m maxsize unlimited extent management local uniform size 1m;
-   </copy>
-   ```
+Copy the highlighted URL and paste it into your browser.  Substitute your IP address in place of the localhost IP address (127.0.0.1) (see below)
 
-   We create now a new user for our vector operations:
-   ```sql
-   <copy>
-   create user vector identified by vector default tablespace tbs2  
-   quota unlimited on tbs2;
-   </copy>
-   ```
-   ```sql
-   <copy>
-   grant DB_DEVELOPER_ROLE to vector;
-   </copy>
-   ```
+Press 'enter' to execute the URL.
+You are now in the lab notebook. Press 'Shift-Enter' or Click the 'Run Cell' icon( ![CellRun](images/RunCellIcon.png) ) to import the required python modules.
 
-4. Exiting the sqlplus session:
-   ```sql
-   <copy>
-   exit
-   </copy>
-   ```
+![Jupyter launcher](images/jupyter02.png)
 
-5. We have now to allocate memory for the in-memory vector index.
-   ```bash
-   <copy>
-   sqlplus / as sysdba
-   </copy>
-   ```
-   ```sql
-   <copy>
-   create pfile from spfile;
-   </copy>
-   ```
-   ```sql
-   <copy>
-   ALTER SYSTEM SET vector_memory_size = 512M SCOPE=SPFILE;
-   </copy>
-   ```
-   ```sql
-   <copy>
-   SHUTDOWN IMMEDIATE
-   </copy>
-   ```
-   ```sql
-   <copy>
-   startup
-   </copy>
-   ```
-   
-   Check if the vector memory size parameter is there after the restart.
-   ```sql
-   <copy>
-   show parameter vector_memory_size;
-   </copy>
-   ```
-   It should show `512M`.
+## Task 2: Verify the valid setup of the workshop environment
+
+ The next two notebook cells introduce the workshop and provide an overview of the goals and expectations.  When ready, press 'Shift-Enter' or click the 'Run Cell' icon( ![CellRun](images/RunCellIcon.png) ) in each cell to continue.
+ 
+![python import](images/WorkshopIntroOverview.png)
+
+The next cell verifies and resets the workshop environment. These tasks include:
+- Setting fine-grained network access control entries (ACEs) for Access Control Lists (ACLs)
+- Creating OCI credentials
+- Granting access to the database data pump directory
+- Removing previously deployed sentence transformer models
+
+When ready, press 'Shift-Enter' or click the 'Run Cell' icon( ![CellRun](images/RunCellIcon.png) ) to reset the workshop.
+
+When the following output is successfully displayed, the workshop has been reset and you may move on to the next Lab
+NOTE: This cell may be rerun until all output is displayed
+ 
+![workshop reset](images/reset.png)
 
 
-6. We now exit the sqlplus session:
-   ```
-   <copy>
-   exit
-   </copy>
-   ```
-You may now **proceed to the next lab**
-
-## Learn More
-* [Oracle Generative AI Service](https://www.oracle.com/artificial-intelligence/generative-ai/generative-ai-service/)
-* [Oracle Database Free](https://www.oracle.com/database/free/)
-* [Oracle Autonomous Database](https://www.oracle.com/autonomous-database/)
-* [Get Started with Oracle AI Database](https://www.oracle.com/ro/database/free/get-started/)
-
-## Acknowledgements
-* **Author** - Bogdan Farca, Customer Strategy Programs Leader, Digital Customer Experience (DCX), EMEA
-* **Contributors** 
-   - Liana Lixandru, Principal Digital Adoption Manager, Digital Customer Experience (DCX), EMEA
-   - Kevin Lazarz, Senior Manager, Product Management, Database
-   - Wojciech Pluta, Director, Technical Product Marketing
-* **Last Updated By/Date** -  Bogdan Farca, Sep 2024
