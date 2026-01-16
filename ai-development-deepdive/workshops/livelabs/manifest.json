@@ -5,42 +5,26 @@
         {
             "title": "Markdown Reference",
             "description": "Markdown Reference and Cheatsheet",
-            "filename": "../../introduction/markdown-cheat-sheet.md"
+                "type": "livelabs",
+			"filename": "../../introduction/markdown-cheat-sheet.md"
         },
         {
             "title": "Introduction",
             "description": "Introduction to the workshop and the labs that follow",
-            "filename": "../../introduction/introduction.md"
+             "type": "livelabs",
+           "filename": "../../introduction/introduction.md"
         },
         {
-            "title": "Lab 1: Setup the development environment",
+            "title": "Start the Jupyter Lab Environment",
+            "description": "Start the Jupyter Lab Environment",
+             "type": "livelabs",
+           "filename": "../../setup-livelabs/setup-livelabs.md"
+        },
+        {
+            "title": "Lab 2: Setup the Python Functions",
             "description": "Setup the dev environment",
             "type": "livelabs",
-            "filename": "../../setup-livelabs/setup-livelabs.md"
-        },
-        {
-            "title": "Lab 2: Generate vector embeddings",
-            "description": "Vectorize a text FAQ file",
-            "type": "livelabs",
-            "filename": "../../vectorization/vectorization.md"
-        },
-        {
-            "title": "Lab 3: Vector retrieval and Large Language Model generation",
-            "description": "Vector rerieval and LLM generation",
-            "type": "livelabs",
-            "filename": "../../search+llm/search+llm.md"
-        },
-        {
-            "title": "Lab 4: Next steps",
-            "description": "Next steps",
-            "type": "livelabs",
-            "filename": "../../next-steps/next-steps.md"
-        },
-        {
-            "title": "Need Help?",
-            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "type": "livelabs",
-            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+            "filename": "../../setup-python/setup-python.md"
         }
     ]
 }
