@@ -9,7 +9,7 @@
            "filename": "../../introduction/introduction.md"
         },
         {
-            "title": "Start the Jupyter Lab Environment",
+            "title": "Lab 1: Start the Jupyter Lab Environment",
             "description": "Start the Jupyter Lab Environment",
              "type": "livelabs",
            "filename": "../../setup-livelabs/setup-livelabs.md"
@@ -19,6 +19,18 @@
             "description": "Setup the dev environment",
             "type": "livelabs",
             "filename": "../../setup-python/setup-python.md"
+        },
+        {
+            "title": "Lab 3: Embed End-User Business Documents",
+            "description": "Embed End-User Business Documents",
+            "type": "livelabs",
+            "filename": "../../sentence-transformer/sentence-transformer.md"
+        },
+        {
+            "title": "Lab 4: AI Vector Search and Retrieval-Augmented Generation (RAG)",
+            "description": "AI Vector Search and Retrieval-Augmented Generation (RAG)",
+            "type": "livelabs",
+            "filename": "../../search+llm/search+llm.md"
         }
     ]
 }
