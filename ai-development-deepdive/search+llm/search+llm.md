@@ -11,9 +11,9 @@ Estimated Time: 40 minutes
 ### Objectives
 In this lab, you will:
 
-- Examine for understanding, then execute the workshop python function "DB_AI_Vector_Search" that you defined in Lab 2, containing Python and SQL code to retrieve records from a vector database based on vector distance from a generalized query or prompt (the "prompt").
-- Examine and execute previously defined workshop function "LLM_Search" which uses a Llama-3.2 multimodal large language model to retrieve a publicly available response to the prompt. This will be our baseline non-RAG response.
-- Examine and execute previously defined workshop function "LLM_Search_using_RAG" which creates a new, enchanced prompt that uses the previous non-RAG response, the top chunks from the database vector search, and custom instructions.
+- Examine for understanding, then execute the workshop python function "DB\_AI\_Vector\_Search" that you defined in Lab 2, containing Python and SQL code to retrieve records from a vector database based on vector distance from a generalized query or prompt (the "prompt").
+- Examine and execute previously defined workshop function "LLM\_Search" which uses a Llama-3.2 multimodal large language model to retrieve a publicly available response to the prompt. This will be our baseline non-RAG response.
+- Examine and execute previously defined workshop function "LLM\_Search_using_RAG" which creates a new, enchanced prompt that uses the previous non-RAG response, the top chunks from the database vector search, and custom instructions.
 
 ## Task 1: AI Vector Search
 In this step, we will take a text, supposedly a question the user is asking re: a relevant business issue, opportunity, etc. and transform it into a vector. We will then feed this vector to the database, where it will be used to retrieve **similar** vectors and associated metadata.
@@ -22,7 +22,7 @@ In this step, we will take a text, supposedly a question the user is asking re: 
 A similarity search looks for the relative order of vectors compared to a query vector.
 The comparison is done using a particular **distance metric**, allowing us to return from the database a result set of the **top closest vectors** along with **the associated data Chunks most similar to the query** .
 
-### Step 1: Executing the query
+### Executing the query
 Below is an example of the similarity search process in SQL.
 
 The similarity search guery returns the **vector\_data** , **doc\_id**, **chunk\_id** and **chunk\_data** columns from the USERINFO\_VECTOR table. It also returns the result of **VECTOR_DISTANCE** as **distance**
@@ -33,3 +33,34 @@ The similarity search guery returns the **vector\_data** , **doc\_id**, **chunk\
 The similarity search guery returns the top ten rows from USERINFO\_VECTOR in ascending **distance** order.  The smallest vector distances between **vector_data** data and the prompt embedding indicates the most similar associated Chunks to the prompt text.
 
 ![overview](images/Station_06_large.png)
+
+Below is an excerpt of the code, previously defined in "**DB\_AI\_Vector\_Search"** function", you will execute in the workshop
+
+![overview](images/Station_06a_large.png)
+
+When you have finished examining the python code in the next cell, and ready to Continue, Press 'Shift-Enter' twice, or Click the 'Run Cell' icon above twice to execute the code and move to the next task
+
+## Task 2: Large Language Model Query
+- In this step, we will execute the "**LLM\_Search**" function defined in Lab 2.
+- A LLM will use our prompt to retrieve a publicly available response from the internat.
+- We will use this as a part-1 baseline to compare against a RAG response that we will generate in Task 3.  See an excerpt from LLM_Search below.
+- **LLM\_Search** takes the prompt ( <u>query\_sql\_UserInfo</u> ) as a single parameter.
+
+![overview](images/Station_06b_large.png)
+
+When you have finished examining the python code in the next cell, and ready to Continue, Press 'Shift-Enter' twice, or Click the 'Run Cell' icon above twice to execute the code and move to the next task
+
+## Task 3: Retrieval-Augmented Generation (RAG) Enhanced Query
+
+![overview](images/Station_09.png)
+
+- In this part-2 step, we will execute the "**LLM\_Search\_using\_RAG**" function defined in Lab 2.
+- We have the query returning a response augmented by the database rows returned by AI Vector Search (Retrieval-Augmented Generation or "RAG").
+- The response has gained more specificity by adding data only available within the organization. See an excerpt from **LLM\_Search\_using\_RAG** below.
+<p>
+RAG is accomplished, in natural language, by combining the preserved AI Vector Search output from Task 1 ( <u>coalesced_top_rows_UserInfo</u> ) with the the prompt ( <u>query_sql_UserInfo</u> ) to present an LLM response combining publicly available and organization-specific information.</p>
+
+![overview](images/Station_06c_large.png)
+
+After reviewing the steps and the screenshot, Press 'Shift-Enter' <strong><u>twice</strong></u> or Click the 'Run Cell' icon <strong><u>twice</strong></u> to Execute the LLM\_Search\_using\_RAG function below
+Stand by for all results to return...
