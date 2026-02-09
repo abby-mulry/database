@@ -6,7 +6,7 @@ Depending on the type of your data, you can use different pretrained, open-sourc
 
 This lab guides you through the code required to download the ```ALL_MPNET_BASE_V2``` sentence transformer model ingest it into the Oracle AI Database.
 
-## Task 1 Download the Sentence Transformer
+## Task 1: Download the Sentence Transformer
 
 Below is an excerpt of the python code to download the sentence transformers model located in the next cell
 ```python
@@ -33,7 +33,7 @@ We are using two Oracle Machine Learning (OML4PY) functions to download and inge
 
 When you have finished examining this code and ready to Continue, Press 'Shift-Enter' twice, or Click the 'Run Cell' icon above twice to execute the code and move to the next task
 
-## Task 2 Load Unstructured Data From the Lines of Business
+## Task 2: Load Unstructured Data From the Lines of Business
 
 ![overview](images/Station_03.png)
 
@@ -55,7 +55,7 @@ Below is an excerpt of the python code to:
 
 When you have finished examining the python code in the next cell, and ready to Continue, Press 'Shift-Enter' twice, or Click the 'Run Cell' icon above twice to execute the code and move to the next task
 
-## Task 3 Transform and Embed End-User Business Documents
+## Task 3: Transform and Embed End-User Business Documents
 
 ### The Stages of Data Transformation
 
