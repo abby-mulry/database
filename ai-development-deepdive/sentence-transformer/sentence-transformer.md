@@ -85,7 +85,6 @@ the ```DBMS_VECTOR_CHAIN``` package is used to chain together the pipeline funct
 
 Below is are excerpts of the workshop python code to retrieve your documents from the staging table, move it through the pipeline and store it in the vector table.
 
-![overview](images/Station_04b_large.png)
 ![overview](images/Station_04c_large.png)
 
 
